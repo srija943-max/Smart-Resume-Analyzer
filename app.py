@@ -5,19 +5,19 @@ from PyPDF2 import PdfReader
 st.set_page_config(page_title="Smart Resume Analyzer", page_icon="📄")
 
 st.title("📄 Smart Resume Analyzer")
-st.caption("Compare your resume with a job description and identify missing skills.")
+st.caption("Upload your resume, paste a job description, and instantly see your match score, missing skills, and suggestions for improvement.")
 # -------------------- UI --------------------
 left, right = st.columns(2)
 
 with left:
-    st.subheader("Job Description")
+    st.subheader("Paste Job Description")
     job_des = st.text_area(
         "Paste the Job Description here",
         height=250
     )
 
 with right:
-    st.subheader("Resume")
+    st.subheader("Upload Resume")
     uploaded_file = st.file_uploader(
         "Upload Your Resume",
         type=["pdf"]
@@ -81,10 +81,10 @@ if analyze:
     # -------------------- Results --------------------
     st.divider()
 
-    st.subheader("Skills Found")
+    st.subheader("Skills in Resume")
     st.write(found)
 
-    st.subheader("Skills Required in Job")
+    st.subheader("Required Skills")
     st.write(jd_skills)
 
     st.subheader("Missing Skills")
@@ -94,10 +94,10 @@ if analyze:
     st.progress(score / 100)
     st.write(f"### {score:.0f}/100")
 
-    st.subheader("💡 Suggestions")
+    st.subheader("Recommended Next Steps")
 
     if missing:
         for skill in missing:
-            st.write(f"➡️ Learn **{skill}**")
+            st.write(f"• Learn **{skill}**")
     else:
         st.success("🎉 Excellent! Your resume matches the Job Description.")
