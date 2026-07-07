@@ -5,6 +5,7 @@ from PyPDF2 import PdfReader
 st.set_page_config(page_title="Smart Resume Analyzer", page_icon="📄")
 
 st.title("📄 Smart Resume Analyzer")
+st.caption("Compare your resume with a job description and identify missing skills.")
 st.write("Upload your resume and compare it with a Job Description.")
 
 # -------------------- UI --------------------
